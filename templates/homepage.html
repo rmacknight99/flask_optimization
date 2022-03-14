@@ -1,0 +1,45 @@
+<html>
+<head>
+<style>
+body {background-color: white; text-align:center; font-family:helvetica}
+.button {
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 100px 100px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+.button1 {
+    background-color: white;
+    color: black;
+    border: 2px solid #800000;
+}
+
+.button1:hover {
+    background-color: #800000;
+    color: white;
+}
+
+.button2 {
+    background-color: white;
+    color: black;
+    border: 2px solid #00FF00;
+}
+
+.button2:hover {
+    background-color: #00FF00;
+    color: white;
+}
+</style>
+</head>
+<body>
+<b><p style="font-size:30px;"> <img src="{{ url_for('static', filename='group_logo.png') }}" width="50" height="50" />Web App Homepage <img src="{{ url_for('static', filename='group_logo.png') }}" width="50" height="50" /></p></b>
+<a href='/help'><button class="button button1">I need help!</button></a>
+<a href='/upload'><button class="button button2">I know what to do!</button></a>
+</body>
+</html>

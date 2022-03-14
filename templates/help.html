@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <style>
+      body {background-color: white; text-align:left; font-family:helvetica}
+      p {text-indent: 10%;color: black; font-size: 14px;}
+    </style>
+  </head>
+  <body>
+    <b><p style="font-size:30px;text-align:center"> <img src="{{ url_for('static', filename='group_logo.png') }}" width="50" height="50" />Help Page <img src="{{ url_for('static', filename='group_logo.png') }}" width="50" height="50" /></p>
+    <p style="text-indent: 2%">Instructions for using this web app:</p></b>
+    <p>
+    <b><p style="text-indent: 2%"> 1.) Train an experiment simulator:</p></b>
+    <p>
+    <p>     Here is the list of arguments that you must supply to train your experiment simulator:
+    <p>
+    <p>     batch_size = number of training points to be included in each epoch
+    <p>     reg = ???
+    <p>     hidden_act = hidden activation function you can choose from the following list
+    <p>                  {}
+    <p>     out_act = output activation function you can choose from the following list
+    <p>               {}
+    <p>     max_epochs = number of training epochs
+    <p>     feature_transform = data transformation for features
+    <p>     target_transform = data transformation for targets
+    <p>     save = True or False whether or not you would like to save the trained experiment simulator
+    <p>
+    <b><p style="text-indent: 2%"> 2.) Perform an optimization campaign:</p></b>
+    <p>
+    <p>     Here is the list of arguments that you must supply to perform a cmapaign
+    <p>
+    <p>     algorithm = the optimization algorithm you would like to use (Phoenics)
+    <p>     goal = the optimization goal (maximize or mininmize)
+    <p>     max_iter = the number of suggested observations
+    <p>
+    <b><p style="text-indent: 2%"> 3.) In each instance you can choose to recieve a file containing some data, given you provide your email.</p></b>
+    <p>
+    <p> If you would like to receive a file containing the training scores for that model please type "yes" in the appropriate field.
+    <p>
+    <p> If you would like to receive a file containing the suggested observations the algorithm suggest type "yes" in the appropriate field.     
+    </p>
+  </body>
+</html>

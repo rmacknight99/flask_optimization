@@ -1,0 +1,40 @@
+><html>
+  <head>
+    <style>
+      body {background-color: white; text-align:center; font-family:helvetica}
+      p {color: #990000; font-size: 14px;}
+    </style>
+  </head>
+  <body>
+    <b><p style="font-size:30px;"> <img src="{{ url_for('static', filename='group_logo.png') }}" width="50" height="50" />Gomes Group DataShare <img src="{{ url_for('static', filename='group_logo.png') }}" width="50" height="50" /></p></b>
+    <form method=post enctype=multipart/form-data>
+      <p><input type=file name=file>
+      <p>email address: <input type=text name=email_address>
+      <p style="text-align:left;">If you would like to train an emulator for your data enter <b>"True"</b>:</p>
+      <p>emulate: 
+	<input type=checkbox id=emulate_yes name=emulate value=True><label for=emulate_yes>yes</label><input type=checkbox id=emulate_no name=emulate value=False><label for=emulate_no>no</label>
+      <p>training batch size: <input type=text name=batch_size>
+      <p>hidden activation function: <input type=text name=h_act>
+      <p>output activation function: <input type=text name=o_act>
+      <p>training epochs: <input type=text name=epochs>
+      <p>feature data transformation: <input type=text name=ft>
+      <p>target data transformation: <input type=text name=tt>
+      <p>would you like to save?
+	<input type=checkbox id=save_yes name=save value=yes><label for=save_yes>yes</label><input type=checkbox id=save_no name=save value=no><label for=save_no>no</label>
+      <p>would you like to receive a file?
+	<input type=checkbox id=file_yes name=e_file value=yes><label for=save_yes>yes</label><input type=checkbox id=file_no name=e_file value=no><label for=save_no>no</label>
+      <p style="text-align:left;">If you would like to run an optimization campaign on your data enter <b>"True"</b>:</p>
+      <p>optimize: 
+	<input type=checkbox id=optimize_yes name=optimize value=True><label for=optimize_yes>yes</label><input type=checkbox id=optimize_no name=optimize value=False><label for=optimize_no>no</label>
+      <p>method:
+	<input type=checkbox id=phoenics name=algorithm value=Phoenics><label for=phoenics>Phoenics</label>
+      <p>maximize or minimize:
+	<input type=checkbox id=max name=goal value=maximize><label for=max>maximize</label><input type=checkbox id=min name=goal value=minimize><label for=min>minimize</label>
+      <p>suggested observations: <input type=test name=max_iter>
+      <p>for consecutive optimization campaigns: <input type=text name=campaign_number>
+      <p>would you like to receive a file?
+	<input type=checkbox id=file_yes name=o_file value=yes><label for=save_yes>yes</label><input type=checkbox id=file_no name=o_file value=no><label for=save_no>no</label>
+      <p> <input type=submit value=Upload></b>
+    </form>
+  </body>
+</html>
