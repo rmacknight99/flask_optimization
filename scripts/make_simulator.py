@@ -20,6 +20,9 @@ from olympus.models import BayesNeuralNet
 import json
 import argparse
 
+def truncate(n, decimals=0):
+    mult = 10 ** decimals
+    return int(n * mult) / mult
 
     # define function to create a dataset in olympus using
     # either a config.json file or csv file with column headers 
@@ -51,7 +54,7 @@ def make_dataset(name):
             
         columns = parameters_list+target_list
         target_ids = target_list
-        mydata = pd.read_csv('datasets/dataset_{}/data.csv'.format(name),names = columns)
+        mydata = pd.read_csv('datasets/dataset_{}/data.csv'.format(name))
 
         dataset = Dataset(data=mydata,target_ids = target_ids)
             
@@ -77,10 +80,13 @@ def make_dataset(name):
     for p in dataset.features:
 
         low = np.min(dataset.data[p])
-
-        if low < 0:
-            low = 0
         high = np.max(dataset.data[p])
+        low = truncate(low, 3)
+        high = truncate(high, 3)
+
+        print("\n")
+        print("parameter: {}, domain: [{},{}]".format(p,low,high))
+        
         param = Parameter(kind = 'continuous',name = p,low = low,high = high)
         param_space.add(param)
         
