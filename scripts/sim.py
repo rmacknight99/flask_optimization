@@ -1,6 +1,8 @@
 import shutil
 from make_simulator import make_dataset, train_emulator
+import tensorflow as tf
 
+print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
 # required arguments #
 try:
     shutil.move("data.csv", "datasets/dataset_custom/data.csv")
@@ -15,6 +17,7 @@ out_act = 'relu'
 max_epochs = 10000
 feature_transform = 'normalize'
 target_transform = 'normalize'
+from_config = False
 
 print('required arguments:\n')
 print('name: {} (dataset name)'.format(name))
@@ -26,4 +29,4 @@ print('feature_transform: {} (data transformation for features)'.format(feature_
 print('target_transform: {} (data transformation for targets)'.format(target_transform))
 
 
-bnn,emulator,dataset,scores=train_emulator(name,batch_size,reg,hidden_act,out_act,max_epochs,feature_transform,target_transform,save=True) 
+bnn,emulator,dataset,scores=train_emulator(name,batch_size,reg,hidden_act,out_act,max_epochs,feature_transform,target_transform,from_config,save=True) 

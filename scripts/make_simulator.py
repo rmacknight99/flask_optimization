@@ -27,7 +27,7 @@ def truncate(n, decimals=0):
     # define function to create a dataset in olympus using
     # either a config.json file or csv file with column headers 
     
-def make_dataset(name):
+def make_dataset(name, from_config=False):
     """
     Create Olympus dataset object and write config, description, and data files
 
@@ -37,7 +37,7 @@ def make_dataset(name):
     Returns:
             dataset: Olympus dataset object
     """
-    try:
+    if from_config:
         
         f = open('datasets/dataset_{}/config.json'.format(name))
         config = json.load(f)
@@ -54,11 +54,12 @@ def make_dataset(name):
             
         columns = parameters_list+target_list
         target_ids = target_list
-        mydata = pd.read_csv('datasets/dataset_{}/data.csv'.format(name))
-
+        mydata = pd.read_csv('datasets/dataset_{}/data.csv'.format(name), names = columns)
+        print(target_ids)
+        print(mydata)
         dataset = Dataset(data=mydata,target_ids = target_ids)
             
-    except:
+    else:
         
         print('------no config file present------\n')            
         print('------for correct behavior ensure the csv file has column headers------\n')
@@ -101,7 +102,7 @@ def make_dataset(name):
 
     return dataset
 
-def train_emulator(name,batch_size,reg,hidden_act,out_act,max_epochs,feature_transform,target_transform,save=True): # train bayesian neural network emulator
+def train_emulator(name,batch_size,reg,hidden_act,out_act,max_epochs,feature_transform,target_transform,from_config=False,save=True): # train bayesian neural network emulator
     """
     Train a BNN experiment simulator 
 
@@ -125,7 +126,7 @@ def train_emulator(name,batch_size,reg,hidden_act,out_act,max_epochs,feature_tra
     bnn = BayesNeuralNet(hidden_depth = 2,hidden_nodes = 12,hidden_act = hidden_act,out_act = out_act,
                          batch_size = batch_size,reg = reg,max_epochs = max_epochs)
     
-    dataset = make_dataset(name)
+    dataset = make_dataset(name,from_config)
     
     emulator = Emulator(dataset = dataset,model = bnn,feature_transform = feature_transform,target_transform = target_transform)
 
